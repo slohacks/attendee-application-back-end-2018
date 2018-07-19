@@ -1,0 +1,4 @@
+*.pyc
+*.db
+/attendee-application
+/npm_modules
