@@ -11,3 +11,8 @@ class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
        model = Application
        fields = ('url', 'id', 'first_name', 'last_name', 'school', 't_shirt',
                  'dob', 'resume', 'agreed', 'owner')
+class UserSerializer(serializers.ModelSerializer):
+    application = serializers.HyperlinkedRelatedField(many = True, view_name = 'application-detail', read_only = True)
+    class Meta:
+        model = User
+        fields= ('url', 'id', 'username', 'application')

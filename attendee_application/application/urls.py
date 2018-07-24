@@ -7,6 +7,7 @@ from rest_framework.schemas import get_schema_view
 
 router = DefaultRouter()
 router.register(r'application', views.ApplicationViewSet)
+router.register(r'user', views.UserViewSet)
 schema_view = get_schema_view(title = 'Pastebin API')
 
 urlpatterns = [

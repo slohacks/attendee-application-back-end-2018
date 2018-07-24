@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from application.models import Application
-from application.serializers import ApplicationSerializer
+from application.serializers import ApplicationSerializer, UserSerializer
 from rest_framework import generics, renderers, viewsets, permissions
 from django.contrib.auth.models import User
 from rest_framework import permissions
@@ -15,3 +15,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     permissions = (permissions.IsAuthenticatedOrReadOnly)
     def perform_create(self, serializer):
         serializer.save(owner = self.request.user)
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
