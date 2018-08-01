@@ -12,9 +12,9 @@ from rest_framework.reverse import reverse
 class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Application.objects.all()
     serializer_class = ApplicationSerializer
-    permissions = (permissions.IsAuthenticatedOrReadOnly)
+    #permissions = (permissions.IsAuthenticatedOrReadOnly)
     def perform_create(self, serializer):
-        serializer.save(owner = self.request.user)
+        serializer.save()
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

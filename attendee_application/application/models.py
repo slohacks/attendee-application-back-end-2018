@@ -23,7 +23,6 @@ class Application(models.Model):
    dob = models.DateField()
    resume = models.TextField()
    agreed = False
-   owner = models.ForeignKey('auth.User', related_name = 'application', on_delete = models.CASCADE)
    objects = models.Manager()
    class Meta:
        ordering = ('created',)
