@@ -8,8 +8,11 @@ from rest_framework import permissions
 class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
    class Meta:
        model = Application
-       fields = ('url', 'id','first_name', 'last_name', 'school', 't_shirt',
-                 'dob', 'resume')
+       fields = ('url', 'id','first_name', 'last_name', 'email', 
+       'phone_number','is_eighteen', 'school', 'graduation_date', 'major',
+        'city', 'dietary_restrictions', 'allergies', 'github', 'linkedin',
+        'personal_website', 'resume', 'short_answer', 'gender', 'ethnicity',
+        'anything_else', 'agreed')
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
