@@ -77,4 +77,8 @@ class Application(models.Model):
     objects = models.Manager()
     class Meta:
         ordering = ('created',)
+class User(models.Model):
+    created = models.DateTimeField(auto_now_add = True)
+    username = models.CharField(max_length = 250)
+    password = models.CharField(max_length = 250)
        
