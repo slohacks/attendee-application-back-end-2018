@@ -65,7 +65,7 @@ class Application(models.Model):
     github = models.CharField(max_length = 250)
     linkedin = models.CharField(max_length = 250)
     personal_website = models.CharField(max_length = 250)
-    resume = models.CharField(max_length = 250)
+    resume = models.FileField(blank = False, null = False)
     #Short Answer
     short_answer = models.TextField()
     #Statistical Qustions
@@ -73,7 +73,7 @@ class Application(models.Model):
     ethnicity = models.IntegerField(default=none, choices = ETHNICITIES)
     anything_else = models.TextField()
     agreed = models.BooleanField(default = False)
-    owner = models.ForeignKey('auth.User', related_name = 'application', on_delete = models.CASCADE)
+    #owner = models.ForeignKey('auth.User', related_name = 'application', on_delete = models.CASCADE)
     objects = models.Manager()
     class Meta:
         ordering = ('created',)
