@@ -65,7 +65,7 @@ class Application(models.Model):
     github = models.CharField(max_length = 250)
     linkedin = models.CharField(max_length = 250)
     personal_website = models.CharField(max_length = 250)
-    resume = models.FileField(blank = False, null = False)
+    resume = models.FileField(upload_to='resume/',blank = False, null = False)
     #Short Answer
     short_answer = models.TextField()
     #Statistical Qustions

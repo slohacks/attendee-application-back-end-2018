@@ -15,7 +15,7 @@ class ApplicationViewSet(viewsets.ModelViewSet):
     parser_classes = (MultiPartParser, FormParser)
     #permissions = (permissions.IsAuthenticatedOrReadOnly)
     def perform_create(self, serializer):
-        serializer.save()
+        serializer.save(resume = self.request.data.get('resume'))
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

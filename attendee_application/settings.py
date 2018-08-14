@@ -127,3 +127,5 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/applications/'
+MDEIA_ROOT = os.path.join(BASE_DIR, 'media_root')
