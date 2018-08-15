@@ -19,5 +19,6 @@ class ApplicationViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    parser_classes = (MultiPartParser, FormParser)
     def perform_create(self, serializer):
         serializer.save()
