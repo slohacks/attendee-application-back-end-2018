@@ -59,7 +59,7 @@ class Application(models.Model):
     graduation_date = models.DateField()
     major = models.CharField(max_length = 250)
     city = models.CharField(max_length = 250)
-    dietary_restrictions = models.IntegerField(default=none, choices = DIET)
+    dietary_restrictions = models.IntegerField(default = none, choices = DIET)
     allergies = models.TextField()
     #Basic Info
     github = models.CharField(max_length = 250)
@@ -69,8 +69,8 @@ class Application(models.Model):
     #Short Answer
     short_answer = models.TextField()
     #Statistical Qustions
-    gender = models.IntegerField(default=none, choices = GENDERS)
-    ethnicity = models.IntegerField(default=none, choices = ETHNICITIES)
+    gender = models.IntegerField(default = none, choices = GENDERS)
+    ethnicity = models.IntegerField(default = none, choices = ETHNICITIES)
     anything_else = models.TextField()
     agreed = models.BooleanField(default = False)
     #owner = models.ForeignKey('auth.User', related_name = 'application', on_delete = models.CASCADE)
