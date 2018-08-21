@@ -48,7 +48,7 @@ class Application(models.Model):
     #Personal Information
     first_name = models.CharField(max_length = 30)
     last_name = models.CharField(max_length = 30)
-    email = models.CharField(max_length = 250)
+    email = models.EmailField(max_length = 250)
     phone_regex = RegexValidator(regex = r'^\+?1?\d{9,15}$', 
      message = "Phone number must be entered" + 
      "in the format: '+999999999'. Up to 15 digits allowed.")
@@ -62,9 +62,9 @@ class Application(models.Model):
     dietary_restrictions = models.IntegerField(default = none, choices = DIET)
     allergies = models.TextField()
     #Basic Info
-    github = models.CharField(max_length = 250)
-    linkedin = models.CharField(max_length = 250)
-    personal_website = models.CharField(max_length = 250)
+    github = models.URLField(max_length = 250)
+    linkedin = models.URLField(max_length = 250)
+    personal_website = models.URLField(max_length = 250)
     resume = models.FileField(upload_to='resume/',blank = False, null = False)
     #Short Answer
     short_answer = models.TextField()
