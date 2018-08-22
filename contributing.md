@@ -18,9 +18,10 @@ Here's what you'll need to know before contributing:
 
 So you've decided that you know our tech,
 
-![pewds](https://media1.tenor.com/images/ecedecd45958c923a44a20bb04e1997c/tenor.gif?itemid=10722056)
+![pewds](https://media1.tenor.com/images/74bf4ac311b1965465a56473ac7682fe/tenor.gif?itemid=11698627)
 
-1. Fork the repository and clone it to you local machine
+1. Fork the repository and clone it to your local machine
+
 2. Create a virtual environment in the repository's directory and activate the virtual environment
 
 ``` 
