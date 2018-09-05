@@ -5,7 +5,7 @@ from rest_framework import permissions
 
 
 
-class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
+class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
        model = Application
        fields = ('url', 'id','first_name', 'last_name', 'email', 
