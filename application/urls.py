@@ -13,4 +13,5 @@ schema_view = get_schema_view(title = 'Pastebin API')
 urlpatterns = [
    url(r'^', include(router.urls)),
    url(r'^schema/$', schema_view),
+   url(r'^questions/$', views.questions),
 ]
