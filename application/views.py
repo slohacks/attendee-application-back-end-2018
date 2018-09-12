@@ -12,6 +12,7 @@ from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 # Create your views here.
 @api_view(['GET', 'POST'])
+@parser_classes(( JSONParser, MultiPartParser, FormParser))
 def application_list(request, format=None):
     if request.method == 'GET':
         applications = Application.objects.all()
@@ -27,6 +28,7 @@ def application_list(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@parser_classes((JSONParser, MultiPartParser, FormParser))
 def application_detail(request, pk, value=None, format=None):
     """
     Retrieve, update or delete a code snippet.
