@@ -5,3 +5,4 @@
 /att-app
 *.json
 *.sqlite3
+/resume
