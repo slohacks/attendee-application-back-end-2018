@@ -6,14 +6,13 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, action, parser_classes
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework.request import Request
+from rest_framework.test import APIRequestFactory
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 # Create your views here.
 @api_view(['GET', 'POST'])
-@parser_classes((MultiPartParser, FormParser, JSONParser))
-
 def application_list(request, format=None):
-
     if request.method == 'GET':
         applications = Application.objects.all()
         serializer = ApplicationSerializer(applications, many=True)
@@ -28,8 +27,7 @@ def application_list(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@parser_classes((MultiPartParser, FormParser, JSONParser))
-def application_detail(request, pk, format=None):
+def application_detail(request, pk, value=None, format=None):
     """
     Retrieve, update or delete a code snippet.
     """
@@ -39,8 +37,12 @@ def application_detail(request, pk, format=None):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ApplicationSerializer(application)
-        return Response(serializer.data)
+        if value:
+            data = getattr(application, value)
+            return Response(data)
+        else:
+            serializer = ApplicationSerializer(application)
+            return Response(serializer.data)
 
     elif request.method == 'PUT':
         serializer = ApplicationSerializer(application, data=request.data)
