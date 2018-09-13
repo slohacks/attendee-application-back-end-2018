@@ -47,6 +47,7 @@ class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
         if not value:
             raise serializers.ValidationError('Invalid: Applicant must agree' + 
             ' to the code of conduct')
+        return value
 
     class Meta:
        model = Application
