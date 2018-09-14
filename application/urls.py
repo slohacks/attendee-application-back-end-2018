@@ -13,7 +13,7 @@ from rest_framework.schemas import get_schema_view
 urlpatterns = [
    #url(r'^', include(router.urls)),
    #url(r'^schema/$', schema_view),
-   url(r'^application/$', views.ApplicationViewSet.as_view(), name = 'application'),
+   url(r'^application/$', views.ApplicationViewSet, name = 'application'),
    url(r'^users/$', views.UserViewSet, name = 'users'),
    url(r'^questions/$', views.questions, name = 'questions'),
 ]
