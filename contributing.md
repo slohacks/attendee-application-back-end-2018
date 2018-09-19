@@ -33,7 +33,7 @@ source attendee-application/bin/activate
 ```
 pip install django
 pip install djangorestframework
-pip install psycopg2
+pip install psycopg2-binary
 # You can also use the pip3 command to insure that you get the python3 variants of the packages
 ```
 4. Open the activate script of your virtual environment
