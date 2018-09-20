@@ -25,9 +25,9 @@ So you've decided that you know our tech,
 2. Create a virtual environment in the repository's directory and activate the virtual environment
 
 ``` 
-venv attendee-application
+virtualenv att-app
 
-source attendee-application/bin/activate
+source att-app/bin/activate
 ```
 3. Install the dependencies
 ```
@@ -58,7 +58,7 @@ export ENV_VARIABLE = 'Please use environment variables for API keys and keys in
 6. Deactivate and reactivate the virtual environment so the environment variables will work
 ```
 deactivate 
-source attendee-application/bin/activate
+source att-app/bin/activate
 ```
 7. Make sure to migrate the database so you have the proper endpoints
 ``` 
