@@ -49,8 +49,8 @@ def application_detail(request, pk, value=None, format=None):
     elif request.method == 'PUT':
         serializer = ApplicationSerializer(application, data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
+            serializer.save(resume = request.data.get('resume'))
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
