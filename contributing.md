@@ -37,6 +37,17 @@ pip install coreapi
 pip install psycopg2-binary
 # You can also use the pip3 command to insure that you get the python3 variants of the packages
 ```
+
+4. Install PostgreSQL onto your machine and setup your database. To do this follow this [guide](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04) from Digital Ocean. 
+The section that is relevant is **Create Database and Database User**.
+*For Mac users*: Install homebrew if it's not already installed. The run these commands.
+```
+brew install postgresql
+brew services start postgresql
+createdb <username>
+psql
+```
+If you are on Ubuntu, the installation is included in the article so just follow that section
 4. Open the activate script of your virtual environment
 ```
 cd attendee_application
