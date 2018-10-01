@@ -19,7 +19,7 @@ class Applicationtest(APITestCase):
         5 - The agreed field is incorrect
     '''
     def test_input_validation0(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = {'file': 'Pls hire me Verizon!'}
         in_file = encode_multipart('BoUnDaRyStRiNg', resume)
         data = {
@@ -33,6 +33,7 @@ class Applicationtest(APITestCase):
             'major': 'Computer Science',
             'city': 'San Jose',
             'dietary_restrictions': 0,
+            'other_dietary_restrictions': '',
             'allergies': 'None',
             'github': 'https://github.com/stonewallstan',
             'linkedin': 'https://www.linkedin.com/in/stonewallstan/',
@@ -40,7 +41,9 @@ class Applicationtest(APITestCase):
             'resume': in_file,
             'short_answer': 'For the memes',
             'gender': 1,
+            'other_gender_field': '',
             'ethnicity': 5,
+            'other_ethnicity': '',
             'anything_else': 'For the memes',
             'agreed': True
         }
@@ -48,7 +51,7 @@ class Applicationtest(APITestCase):
         response = self.client.post(url, data, format = 'multipart')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
     def test_input_validation1(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = open('resume.txt', 'w')
         data = {
             'first_name': 'Stanley',
@@ -73,7 +76,7 @@ class Applicationtest(APITestCase):
         }
         pass
     def test_input_validation2(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = open('resume.txt', 'w')
         data = {
             'first_name': 'Stanley',
@@ -99,7 +102,7 @@ class Applicationtest(APITestCase):
         }
         pass
     def test_input_valdiation3(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = open('resume.txt', 'w')
         data = {
             'first_name': 'Stanley',
@@ -125,7 +128,7 @@ class Applicationtest(APITestCase):
         }
         pass
     def test_input_validation4(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = open('resume.txt', 'w')
         data = {
             'first_name': 'Stanley',
@@ -151,7 +154,7 @@ class Applicationtest(APITestCase):
         }
         pass
     def test_input_validation5(self):
-        url = reverse('application')
+        url = reverse('application_list')
         resume = open('resume.txt', 'w')
         data = {
             'first_name': 'Stanley',

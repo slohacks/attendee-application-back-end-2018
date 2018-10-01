@@ -12,6 +12,12 @@ class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
     graduation_date = serializers.DateField()
     is_eighteen = serializers.BooleanField(default = False)
     agreed = serializers.BooleanField(default = False)
+    other_dietary_restrictions = serializers.CharField(allow_blank = True)
+    allergies = serializers.CharField(allow_blank = True)
+    other_gender_field = serializers.CharField(allow_blank = True)
+    other_ethnicity = serializers.CharField(allow_blank = True)
+    anything_else = serializers.CharField(allow_blank = True)
+
     # Validators for fields
     def validate_github(self, value):
         if 'https://github.com/' not in value:
@@ -53,9 +59,9 @@ class ApplicationSerializer(serializers.HyperlinkedModelSerializer):
        model = Application
        fields = ('id','first_name', 'last_name', 'email', 
        'phone_number','is_eighteen', 'school', 'graduation_date', 'major',
-        'city', 'dietary_restrictions', 'allergies', 'github', 'linkedin',
-        'personal_website', 'resume', 'short_answer', 'gender', 'ethnicity',
-        'anything_else', 'agreed')
+        'city', 'dietary_restrictions','other_dietary_restrictions', 'allergies',
+         'github', 'linkedin','personal_website', 'resume', 'short_answer',
+          'gender', 'other_gender_field', 'ethnicity', 'other_ethnicity', 'anything_else', 'agreed')
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User

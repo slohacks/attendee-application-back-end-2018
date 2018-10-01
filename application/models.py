@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import RegexValidator
 
-# Create your models here.
 class Application(models.Model):
     #Dietary Restrictions
     none = 0
@@ -10,21 +9,23 @@ class Application(models.Model):
     gluten_free = 2
     vegan = 3
     vegetarian = 4
+    other_diet = 5
     DIET = (
         (none, 'None'),
         (kosher, 'Kosher'),
         (gluten_free, 'Gluten-Free'),
         (vegan, 'Vegan'),
-        (vegetarian, 'Vegetarian')
+        (vegetarian, 'Vegetarian'),
+        (other_diet, 'Other')
     )
     #Genders
     female = 0 
     male = 1
-    other = 2
+    other_gender = 2
     GENDERS = (
         (female, 'Female'),
         (male, 'Male'),
-        (other, 'Other'),
+        (other_gender, 'Other'),
     )
     #Ethnicites
     aian = 0
@@ -33,7 +34,7 @@ class Application(models.Model):
     latino = 3
     nhopi = 4
     white = 5
-    other = 6
+    other_ethnicities = 6
     ETHNICITIES = (
         (aian, 'American Indian or Alaska Native'),
         (asian, 'Asian'),
@@ -41,7 +42,7 @@ class Application(models.Model):
         (latino, 'Hispanic or Latino'),
         (nhopi, 'Native Hawaiian or Other Pacific Islander'),
         (white, 'White'),
-        (other, 'Other')
+        (other_ethnicities, 'Other')
     )
 
     created = models.DateTimeField(auto_now_add = True)
@@ -60,6 +61,7 @@ class Application(models.Model):
     major = models.CharField(max_length = 250)
     city = models.CharField(max_length = 250)
     dietary_restrictions = models.IntegerField(default = none, choices = DIET)
+    other_dietary_restrictions = models.TextField()
     allergies = models.TextField()
     #Basic Info
     github = models.URLField(max_length = 250)
@@ -70,7 +72,9 @@ class Application(models.Model):
     short_answer = models.TextField()
     #Statistical Qustions
     gender = models.IntegerField(default = none, choices = GENDERS)
+    other_gender_field = models.TextField()
     ethnicity = models.IntegerField(default = none, choices = ETHNICITIES)
+    other_ethnicity = models.TextField()
     anything_else = models.TextField()
     agreed = models.BooleanField(default = False)
     #owner = models.ForeignKey('auth.User', related_name = 'application', on_delete = models.CASCADE)
