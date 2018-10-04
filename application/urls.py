@@ -17,4 +17,5 @@ urlpatterns = [
     path('applications/<int:pk>', views.application_detail, name="application_detail"),
     path('applications/<int:pk>/<value>', views.application_detail, name="application_detail"),
     path('questions/', views.questions, name="questions"),
+    path('resume/', views.resume_upload, name="resume_upload"),
 ]
