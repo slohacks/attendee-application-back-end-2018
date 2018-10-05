@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-from application.models import Application
-from application.serializers import ApplicationSerializer, UserSerializer
+from application.models import Application, Resume
+from application.serializers import ApplicationSerializer, UserSerializer, ResumeSerializer
 from rest_framework import generics, renderers, viewsets, permissions, status
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view, action, parser_classes
@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.request import Request
 from rest_framework.test import APIRequestFactory
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser, FileUploadParser
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -23,7 +23,6 @@ def application_list(request, format=None):
         serializer = ApplicationSerializer(data=request.data)
         queryset = Application.objects.all()
         if serializer.is_valid():
-            serializer.save(resume = request.data.get('resume'))
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -49,13 +48,22 @@ def application_detail(request, pk, value=None, format=None):
     elif request.method == 'PUT':
         serializer = ApplicationSerializer(application, data=request.data)
         if serializer.is_valid():
-            serializer.save(resume = request.data.get('resume'))
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         application.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+@parser_classes((JSONParser, MultiPartParser, FormParser, FileUploadParser))
+def resume_upload(request, format=None):
+    if request.method == 'POST':
+        serializer = ResumeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(resume = request.data.get('resume'))
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # class ApplicationViewSet(viewsets.ModelViewSet):
 #     queryset = Application.objects.all()
