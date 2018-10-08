@@ -4,6 +4,7 @@
 /npm_modules
 /att-app
 *.json
-*.sqlite3
+*.sqllite3
 /resume
-
+/node_modules 
+*/__pycache__

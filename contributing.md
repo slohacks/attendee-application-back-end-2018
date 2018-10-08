@@ -25,39 +25,40 @@ So you've decided that you know our tech,
 2. Create a virtual environment in the repository's directory and activate the virtual environment
 
 ``` 
-virtualenv att-app
+virtualenv venv
 
-source att-app/bin/activate
+source venv/bin/activate
 ```
 3. Install the dependencies
 ```
-pip install django
-pip install djangorestframework
-pip install coreapi
-pip install psycopg2-binary
+pip install -r requirements.txt
 # You can also use the pip3 command to insure that you get the python3 variants of the packages
 ```
 
-4. Install PostgreSQL onto your machine and setup your database. To do this follow this [guide](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04#create-a-database-and-database-user) from Digital Ocean. 
-The section that is relevant is **Create Database and Database User**.
-*For Mac users*: Install homebrew if it's not already installed. Then run these commands.
+4. Install PostgreSQL onto your machine and setup your database. 
+
+*For Mac users*:
+
+ Install homebrew if it's not already installed. Then run these commands.
+
 ```
 brew install postgresql
 brew services start postgresql
 createdb <username>
 psql
 ```
-Then follow the Digital Ocean [guide](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04#create-a-database-and-database-user)
-If you are on Ubuntu, the installation is included in the article so just follow that section
-5. Open the activate script of your virtual environment
+
+Then follow the Digital Ocean [guide](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04#create-a-database-and-database-user) from this point on in the guide.
+
+*For Ubuntu Users*:
+ 
+ Follow the Digital Ocean [guide](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-14-04#create-a-database-and-database-user) from the start.  
+5. Open the activate script and set your environment variables in the the virtual environment
 ```
-cd attendee_application
-cd bin
-# Don't have to use vim to edit it, but you can use any editor to edit this script
-vim activate
-```
-6. Set your environment variables in the activate script of the virtual environment
-```
+#opening the activate script
+vim venv/bin/activate
+
+#Activate Script
 #find the deactivate function 
 deactivate() {
     ...
@@ -75,18 +76,22 @@ export DB_USER = 'Your db username'
 export DB_PASS = 'Your db password'
 export DB_HOST = 'Your db host name'
 ```
-7. Deactivate and reactivate the virtual environment so the environment variables will work
+6. Deactivate and reactivate the virtual environment so the environment variables will work
 ```
 deactivate 
 source att-app/bin/activate
 ```
-8. Make sure to migrate the database so you have the proper endpoints
+7. Make sure to migrate the database so you have the proper endpoints
 ``` 
 # Again you can use the python3 command to guarantee that the python3 interpreter is selected, but not necessary
 python manage.py makemigrations application
 python manage.py migrate
 # Run the server
 python manage.py runserver
+```
+8. Add your virtual environment directory to the bottom of the .gitignore file
+```
+/venv
 ```
 9. Create a Pull Request with your changes
 10. Congratulations, you contributed! 
