@@ -13,3 +13,8 @@ pytz==2018.5
 requests==2.19.1
 uritemplate==3.0.0
 urllib3==1.23
+django-cors-headers==2.4.0
+djangorestframework-jwt
+cryptography
+pyjwt
+python-dotenv
